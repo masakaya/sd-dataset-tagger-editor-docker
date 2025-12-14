@@ -1,0 +1,29 @@
+# Dataset files
+dataset/images/*
+dataset/tags/*
+!dataset/images/.gitkeep
+!dataset/tags/.gitkeep
+
+# Model cache
+models/*
+!models/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prompt file
+prompt.md
