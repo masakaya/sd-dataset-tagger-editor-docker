@@ -1,0 +1,36 @@
+services:
+  wd-tagger:
+    build:
+      context: ./wd-tagger
+      dockerfile: Dockerfile
+    volumes:
+      - ./dataset:/dataset
+      - ./models:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    profiles:
+      - tagger
+
+  tag-editor:
+    build:
+      context: ./tag-editor
+      dockerfile: Dockerfile
+    ports:
+      - "7862:7862"
+    volumes:
+      - ./dataset:/dataset
+      - ./models:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    profiles:
+      - editor
